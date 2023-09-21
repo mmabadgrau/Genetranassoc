@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Genetranassoc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <link href="/css/normal.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<p><font size="4"><b><font size="5">Users' documentation for Genetranassoc in c++</font></b></font></p>
+<p><br>
+  <b><font size="4">Installation</font></b></p>
+<p><b>Compiled version:</b></p>
+<p>Compiled version for linux.-After you have succesfully obtained the archive 
+  you can execute the following Unix commands to install the program:</p>
+<ul>
+  <li>gunzip [filename].gz</li>
+  <li>chmod 755 [filename]</li>
+</ul>
+<br>where [filename] may be Genetranassoc1.0 for the linux x64 version or Genetranassoc1.0_x32 for the linux x32 version.
+<p><b>Source code version:</b></p>
+<p>Source code version for linux.-After you have succesfully obtained the archive 
+  you can execute the following Unix commands to install the program:</p>
+<ul>
+  <li>tar xvzf Genetranassoc1.0.tar.gz</li>
+  <li>cd Genetranassoc1.0</li>
+  <li>make</li>
+</ul>
+<p><font size="4"><b>Execution</b></font></p>
+<p>To use Genetranassoc, write the following command line:</p>
+<p>./Genetranassoc &lt;filename1&gt; &lt;filename2&gt; &lt;filename3&gt; &lt;output filename&gt; &lt;number of heading fileds (default: 1)&gt; &lt;number of permutations to be used (0: no permutation test, default)&gt;</p>
+<p>where &lt;filename1&gt; is the input file with gene expression profiles whose format is shown below</p>
+<p>&lt;filename2&gt; is the input file with SNP genotypes that must be in extended makeped format, as shown below and </p>
+<p>&lt;filename3&gt; is the input file with SNP genotypes that must be also in extended makeped format and which will be used as a reference file to choose the major alleles. In the case this is not important, filename2 must be provided again and major alleles will be those considering this file.</p> 
+<p>&nbsp;</p>
+<p>Note: The program name <b>Genetranassoc</b> may be different depending on the version you have installed. As an example, if you used the compiled version for linux x32 the name is <b>Genetranassoc1.0_x32</b>.</p>
+<p>Note 2: There must be two one-column text files with physical positions and rs numbers with same name as filename2 and filename3 but extensions .pou and .rs respectively.
+<p><b>Format of the input file with gene expression profiles</b></p>
+<p>A csv text file of gene expression values with a 
+ heading row and <b>n</b> more rows, one for each expression data variable.</p>
+<p>The number of columns is <b>h+m</b>, with <b>h</b> being the number of heading columns and <b>m</b> being the number of individuals.</p>
+<p><a href="examplefile1.csv">Here</a> there is an example of a gene expression file with 2 heading columns.</p>
+<p><b>Format of the input genotype file</b> </p>
+<p>A text file of SNP data set, in post-makeped format as described here:</p>
+<p>One row per individual, 7 + 2x<i>TotalSNPs</i>
+  columns, with <i>TotalSNPs</i> being the number of SNPs. Columns must be separared
+  by a blank or tab character.Each column must contain an integer.
+  <a href=example.gou>See an example of input file</a>.
+  </p>
+<p>Description of columns: </p>
+<ul>
+  <li>Column 1: family code </li>
+  <li>Column 2: individual code </li>
+  <li>Column 3: father code (0 if the individual is not a child)</li>
+  <li>Column 4: mother code (0 if the individual is not a child)</li>
+  <li>Column 5: gender</li>
+  <li>Column 6: affection status</li>
+  <li>Column 7: another individual id</li>
+  <li>Columns 8 until 7+2*<i>TotalSNPs</i>: SNPs values (each SNP uses two contiguous
+    columns). Example: if SNP1 value for an individual is 12 (heterozygous), column8
+    will have the value 1 and column9 will have the 2.</li>
+</ul>
+
+<p><b>Format of the input file with physical positions</b>
+<p>One position per row. <a href="example.pou">Click here to see an example</a>.</p>
+
+<p><b>Format of the input file with rs numbers</b>
+<p>One position per row. <a href="example.rs">Click here to see an example</a>.</p>
+
+<p><b>Output for the program Genetranassoc</b></p>
+<p>The output will be written at a file which is a csv text file with a heading and one row for each pair of SNP-expression data variable (first and second column), the Spearman correlation value (third column), raw p value (fourth column), -log10 of the raw p value (fifth column) and, in the case permutation tests were selected, permutation p values (sixth column) and -log10 of the permutation p values (seventh column).</p>
+</body>
+</html>
